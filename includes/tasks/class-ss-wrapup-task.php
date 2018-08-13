@@ -25,7 +25,21 @@ class Wrapup_Task extends Task {
 	 * @return true|\WP_Error True on success, WP_Error otherwise
 	 */
 	public function delete_temp_static_files() {
-		$archive_dir = $this->options->get_archive_dir();
+        $workDir = trim($this->options->get_local_dir());
+        $currentDir = $this->options->get_current_dir();
+
+        $pathParts = explode(DIRECTORY_SEPARATOR, trim($workDir, DIRECTORY_SEPARATOR));
+        $name  = array_pop($pathParts);
+
+        $baseDir = DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR, $pathParts);
+
+        chdir($baseDir);
+        unlink($currentDir);
+	    symLink($name, 'current');
+
+        delete_transient('static_export_dir');
+
+	    $archive_dir = $this->options->get_archive_dir();
 
 		if ( file_exists( $archive_dir ) ) {
 			$directory_iterator = new \RecursiveDirectoryIterator( $archive_dir, \FilesystemIterator::SKIP_DOTS );

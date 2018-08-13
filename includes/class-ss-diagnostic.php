@@ -215,7 +215,7 @@ class Diagnostic {
 	}
 
 	public function is_local_dir_writeable() {
-		$local_dir = $this->options->get( 'local_dir' );
+		$local_dir = $this->options->get_local_dir();
 		$label = sprintf( __( "Checking if web server can write to Local Directory: <code>%s</code>", 'simply-static' ), $local_dir );
 		return array(
 			'label' => $label,

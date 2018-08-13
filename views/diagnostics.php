@@ -1,5 +1,8 @@
 <?php
 namespace Simply_Static;
+
+
+delete_transient('static_export_dir');
 ?>
 
 <h1><?php _e( 'Simply Static &rsaquo; Diagnostics', Plugin::SLUG ); ?></h1>

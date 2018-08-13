@@ -14,7 +14,7 @@ class Transfer_Files_Locally_Task extends Task {
 	 * @return boolean true if done, false if not done
 	 */
 	public function perform() {
-		$local_dir = $this->options->get( 'local_dir' );
+		$local_dir = $this->options->get_local_dir();
 
 		list( $pages_processed, $total_pages ) = $this->copy_static_files( $local_dir );
 

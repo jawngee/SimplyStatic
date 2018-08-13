@@ -134,4 +134,18 @@ class Options {
 	public function get_destination_url() {
 		return $this->get( 'destination_scheme' ) . $this->get( 'destination_host' );
 	}
+
+    public function get_local_dir() {
+        $dir = get_transient('static_export_dir');
+        if (!$dir) {
+            $dir = $this->get('local_dir').date('YmdHis').DIRECTORY_SEPARATOR;
+            set_transient('static_export_dir', $dir);
+        }
+
+        return $dir;
+    }
+
+    public function get_current_dir() {
+        return $this->get('local_dir')."current";
+    }
 }
