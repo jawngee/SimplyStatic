@@ -17,6 +17,9 @@ class Wrapup_Task extends Task {
 			Util::debug_log( "Keeping temporary files" );
 		}
 
+
+        update_option('simply-static-publish-state','ok');
+
 		return true;
 	}
 
