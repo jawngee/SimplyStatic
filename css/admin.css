@@ -4,8 +4,6 @@
 
 #sistContainer #sistContent {
 	width: 100%;
-	float: left;
-	max-width: calc( 100% - 300px );
 }
 
 #sistContainer #sistSidebar {

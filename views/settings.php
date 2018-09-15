@@ -2,7 +2,7 @@
 namespace Simply_Static;
 ?>
 
-<h1><?php _e( 'Simply Static &rsaquo; Settings', 'simply-static' ); ?></h1>
+<h1><?php _e( 'Settings', 'simply-static' ); ?></h1>
 
 <div class='wrap' id='settingsPage'>
 

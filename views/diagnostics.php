@@ -5,7 +5,7 @@ namespace Simply_Static;
 delete_transient('static_export_dir');
 ?>
 
-<h1><?php _e( 'Simply Static &rsaquo; Diagnostics', Plugin::SLUG ); ?></h1>
+<h1><?php _e( 'Diagnostics', Plugin::SLUG ); ?></h1>
 
 <div class='wrap' id='diagnosticsPage'>
 

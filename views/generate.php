@@ -2,14 +2,14 @@
 namespace Simply_Static;
 ?>
 
-<h1><?php _e( 'Simply Static &rsaquo; Generate', 'simply-static' ); ?></h1>
+<h1><?php _e( 'Publish', 'simply-static' ); ?></h1>
 
 <div class='wrap' id='generatePage'>
 
 	<?php wp_nonce_field( 'simply-static_generate' ) ?>
 
 	<div class='actions'>
-		<input id='generate' class='button button-primary button-hero <?php if ( ! $this->archive_generation_done ) { echo 'hide'; } ?>' type='submit' name='generate' value='<?php _e( "Generate Static Files", 'simply-static' ); ?>' />
+		<input id='generate' class='button button-primary button-hero <?php if ( ! $this->archive_generation_done ) { echo 'hide'; } ?>' type='submit' name='generate' value='<?php _e( "Publish Site", 'simply-static' ); ?>' />
 
 		<input id='cancel' class='button button-cancel button-hero <?php if ( $this->archive_generation_done ) { echo 'hide'; } ?>' type='submit' name='cancel' value='<?php _e( "Cancel", 'simply-static' ); ?>' />
 
