@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Plugin Name:       Simply Static
+ * Plugin Name:       Static Publisher
  * Plugin URI:        http://simplystatic.co/
  * Description:       Produces a static HTML version of your WordPress install and adjusts URLs accordingly.
  * Version:           2.1.0
