@@ -8,6 +8,7 @@ namespace Simply_Static;
 
 	<h2 id='sistTabs' class='nav-tab-wrapper'>
 		<a class='nav-tab' id='general-tab' href='#tab-general'><?php _e( 'General', 'simply-static' ); ?></a>
+        <a class='nav-tab' id='cloudflare' href='#cloudflare'><?php _e( 'Cloudflare', 'simply-static' ); ?></a>
 		<a class='nav-tab' id='include-exclude-tab' href='#tab-include-exclude'><?php _e( 'Include/Exclude', 'simply-static' ); ?></a>
 		<a class='nav-tab' id='advanced-tab' href='#tab-advanced'><?php _e( 'Advanced', 'simply-static' ); ?></a>
 		<a class='nav-tab' id='reset-settings-tab' href='#tab-reset-settings'><?php _e( 'Reset', 'simply-static' ); ?></a>
@@ -123,6 +124,54 @@ namespace Simply_Static;
 				</tbody>
 			</table>
 		</div>
+
+        <div id='cloudflare' class='tab-pane'>
+            <table class='form-table'>
+                <tbody>
+                <tr>
+                    <th>
+                        <label for='cloudflareEmail'><?php _e( "Cloudflare Email", 'simply-static' ); ?></label>
+                    </th>
+                    <td>
+                        <input aria-describedby='cloudflareEmailHelpBlock' type='text' id='cloudflareEmail' name='cloudflare_email' value='<?php echo esc_attr( $this->cloudflare_email ); ?>' class='widefat' />
+                        <div id='cloudflareEmailHelpBlock' class='help-block'>
+                            <p><?php _e( "Your Cloudflare email address.", 'simply-static' ); ?></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for='cloudflareDomain'><?php _e( "Cloudflare Domain", 'simply-static' ); ?></label>
+                    </th>
+                    <td>
+                        <input aria-describedby='cloudflareDomainHelpBlock' type='text' id='cloudflareDomain' name='cloudflare_domain' value='<?php echo esc_attr( $this->cloudflare_domain ); ?>' class='widefat' />
+                        <div id='cloudflareDomainHelpBlock' class='help-block'>
+                            <p><?php _e( "Your Cloudflare domain name.", 'simply-static' ); ?></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for='cloudflareKey'><?php _e( "Cloudflare Key", 'simply-static' ); ?></label>
+                    </th>
+                    <td>
+                        <input aria-describedby='cloudflareKeyHelpBlock' type='password' id='cloudflareKey' name='cloudflare_key' value='<?php echo esc_attr( $this->cloudflare_key ); ?>' class='widefat' />
+                        <div id='cloudflareKeyHelpBlock' class='help-block'>
+                            <p><?php _e( "Your Cloudflare key.", 'simply-static' ); ?></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <p class='submit'>
+                            <input class='button button-primary' type='submit' name='save' value='<?php _e( "Save Changes", 'simply-static' );?>' />
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
 		<div id='include-exclude' class='tab-pane'>
 			<table class='form-table'>

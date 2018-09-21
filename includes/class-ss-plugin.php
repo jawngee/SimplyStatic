@@ -388,6 +388,9 @@ class Plugin
             ->set_template('settings')
             ->assign('origin_scheme', Util::origin_scheme())
             ->assign('origin_host', Util::origin_host())
+            ->assign('cloudflare_email', $this->options->get('cloudflare_email'))
+            ->assign('cloudflare_domain', $this->options->get('cloudflare_domain'))
+            ->assign('cloudflare_key', $this->options->get('cloudflare_key'))
             ->assign('destination_scheme', $this->options->get('destination_scheme'))
             ->assign('destination_host', $this->options->get('destination_host'))
             ->assign('temp_files_dir', $this->options->get('temp_files_dir'))
@@ -464,6 +467,9 @@ class Plugin
 
         // Save settings
         $this->options
+            ->set('cloudflare_email', $this->fetch_post_value('cloudflare_email'))
+            ->set('cloudflare_domain', $this->fetch_post_value('cloudflare_domain'))
+            ->set('cloudflare_key', $this->fetch_post_value('cloudflare_key'))
             ->set('destination_scheme', $destination_scheme)
             ->set('destination_host', $destination_host)
             ->set('temp_files_dir', Util::trailingslashit_unless_blank($this->fetch_post_value('temp_files_dir')))

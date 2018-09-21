@@ -1,0 +1,15 @@
+{
+    "name": "ilab/static-publisher",
+    "description": "Publish your WordPress site to static HTML.  Based on Simply Static.",
+    "type": "wordpress-plugin",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Jon Gilkison",
+            "email": "jon.gilkison@gmail.com"
+        }
+    ],
+    "require": {
+        "jamesryanbell/cloudflare": "^1.11"
+    }
+}

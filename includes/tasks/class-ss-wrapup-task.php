@@ -1,6 +1,8 @@
 <?php
 namespace Simply_Static;
 
+use Cloudflare\Zone;
+
 class Wrapup_Task extends Task {
 
 	/**
@@ -13,6 +15,7 @@ class Wrapup_Task extends Task {
 			Util::debug_log( "Deleting temporary files" );
 			$this->save_status_message( __( 'Wrapping up', 'simply-static' ) );
 			$deleted_successfully = $this->delete_temp_static_files();
+			$this->clearCloudflare();
 		} else {
 			Util::debug_log( "Keeping temporary files" );
 		}
@@ -22,6 +25,47 @@ class Wrapup_Task extends Task {
 
 		return true;
 	}
+
+	public function clearCloudflare() {
+        $cloudflareEmail = $this->options->get('cloudflare_email');
+        $cloudflareDomain = $this->options->get('cloudflare_domain');
+        $cloudflareKey = $this->options->get('cloudflare_key');
+
+        error_log("[Publish] Cloudflare: $cloudflareDomain");
+
+        if (!empty($cloudflareEmail) && !empty($cloudflareDomain) && !empty($cloudflareKey)) {
+            $zone = new Zone($cloudflareEmail, $cloudflareKey);
+            $results = $zone->zones();
+
+            $id = null;
+            if ($results->result && is_array($results->result)) {
+                foreach($results->result as $zone) {
+                    error_log("[Publish] Found ".count($results->result)." zones.");
+                    if ($zone->name == $cloudflareDomain) {
+                        $id = $zone->id;
+                        error_log("[Publish] Found zone $id");
+                        break;
+                    }
+                }
+            } else {
+                error_log('[Publish] NO RESULTS '.json_encode($results));
+            }
+
+            if (!$id) {
+                error_log('[Publish] Cloudflare Error: Invalid domain.'.json_encode($results));
+            } else {
+                error_log("[Publish] Purging cache for $cloudflareDomain ($id)");
+                $cache = new Zone\Cache($cloudflareEmail, $cloudflareKey);
+                $result=$cache->purge($id, true);
+                if ($result->success != 1) {
+                    $error=$result->errors[0];
+                    error_log("[Publish] Cloudflare Error: {$error->message}");
+                } else {
+                    error_log("[Publish] Cache purged: $cloudflareDomain ($id)");
+                }
+            }
+        }
+    }
 
 	/**
 	 * Delete temporary, generated static files
