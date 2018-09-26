@@ -104,7 +104,7 @@ class Url_Fetcher {
 			Util::debug_log( "http_status_code: " . $static_page->http_status_code . " | content_type: " . $static_page->content_type  );
 
 			$relative_filename = null;
-			if ( $static_page->http_status_code == 200 ) {
+			if (( $static_page->http_status_code == 200 ) || ( $static_page->http_status_code == 404 )) {
 				// pclzip doesn't like 0 byte files (fread error), so we're
 				// going to fix that by putting a single space into the file
 				if ( $filesize === 0 ) {

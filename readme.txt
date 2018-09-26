@@ -3,7 +3,7 @@ Contributors: codeofconduct
 Tags: html, static website generator, static site, secure, fast
 Requires at least: 4.0
 Tested up to: 4.9
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,10 @@ No. We haven't done any testing on Windows and, based on user feedback, it seems
 3. On the Include/Exclude page, you can select additional URLs, files, or directories to include in your static site. And you can also choose URLs (or URL patterns) to exclude from your static site.
 
 == Changelog ==
+
+= 2.3.0, September 26, 2018 =
+
+* New: Export 404 pages
 
 = 2.2.0, September 21, 2018 =
 

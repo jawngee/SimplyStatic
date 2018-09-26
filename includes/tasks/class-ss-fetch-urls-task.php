@@ -73,7 +73,7 @@ class Fetch_Urls_Task extends Task {
 			}
 
 			// Not a 200 for the response code? Move on.
-			if ( $static_page->http_status_code != 200 ) {
+			if (( $static_page->http_status_code != 200 ) && ( $static_page->http_status_code != 404 )) {
 				continue;
 			}
 
